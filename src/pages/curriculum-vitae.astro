@@ -1,0 +1,378 @@
+---
+// Source of truth: comms/cv/soeren-oxenhave.html in the cto-workspace.
+// Wording is kept as written there; only the presentation is the site's.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const skills = [
+	['Leadership', 'Engineering team leadership, 1:1 coaching, OKRs, career ladders, stakeholder alignment'],
+	['Backend', '.NET / C#, REST APIs, event-driven architecture, RabbitMQ, IdentityServer'],
+	['Product', 'Product engineering (Cagan/Empowered), discovery and delivery, roadmapping, ADRs'],
+	['Infrastructure', 'Docker Swarm, Azure, CI/CD, ELK stack, containerised multi-tenant SaaS at scale'],
+	['Compliance', 'ISAE-3000 Type 2, ISAE-3402 Type 1 and 2, security assessments, audit management'],
+	['Frontend', 'React, TypeScript. Architectural oversight and standards, not day-to-day delivery'],
+	['AI in operations', 'Developer tooling adoption (Claude Code, Copilot), team AI practice change, workflow integration, AI-native engineering habits'],
+	['AI in product', 'AI-assisted product discovery, rapid prototyping, AI tooling strategy for B2B SaaS'],
+];
+
+const roles = [
+	{
+		title: 'CTO',
+		company: 'Zylinc',
+		dates: 'Feb 2024 – Present',
+		place: 'Copenhagen, Denmark',
+		context:
+			'Cloud-native contact centre platform for enterprise customers primarily in Denmark. ~35 employees, 200 tenants.',
+		points: [
+			'Lead a 14-person engineering team across backend, frontend, and DevOps in a flat structure with no intermediate management layer.',
+			'Define and drive technical strategy for a cloud-native communication platform serving enterprise contact centres across Europe.',
+			'Led platform infrastructure programme covering 5 production swarms, 200 tenants, and 5,000 containers across 35 servers.',
+			'Drove compliance programme achieving ISAE-3402 Type I and Type II in collaboration with the CISO.',
+			'Introduced product engineering methodology (Cagan/Empowered) and monthly innovation days to increase engineering autonomy and velocity.',
+			'Drove AI adoption across the engineering team, establishing Claude Code and AI-assisted tooling as standard developer practice, with measurable change in how the team approaches daily tasks and problem-solving.',
+			'Established engineering career paths, structured 1:1 programme, and OKR-based goal alignment across the team.',
+		],
+	},
+	{
+		title: 'CTO',
+		company: 'TimeLog',
+		dates: 'Oct 2022 – Feb 2024',
+		place: 'Copenhagen, Denmark',
+		context:
+			'Project management and time tracking SaaS for professional services firms. Venture-backed; grew from ~24 to 120 employees, right-sized to 75 during tenure.',
+		points: [
+			'Stepped in as Acting CTO during a critical leadership transition (Oct 2022), maintaining delivery continuity across 28 engineers with no disruption; formally appointed CTO in Jan 2023.',
+			'Led a team of 2 team managers and 28 engineers; owned stakeholder alignment with Customer Success and Product Management.',
+			'Drove product engineering transformation, introducing Cagan/Empowered methodologies and elements of Shape Up.',
+			'Expanded automation and control of the customer product lifecycle through purpose-built internal tooling (Account Portal, TCAM).',
+			'Maintained ISAE-3000 Type 2 and ISAE-3402 Type 2 accreditation in collaboration with the CISO.',
+			'Built and coached an engineering career ladder; led regular 1:1s and personal development discussions with team managers and engineers.',
+			'Developed technology sunrise/sunsetting plans to rationalise the platform’s technology mix.',
+		],
+	},
+	{
+		title: 'Tech Lead',
+		company: 'TimeLog',
+		dates: 'Sep 2018 – Oct 2022',
+		place: 'Copenhagen, Denmark',
+		points: [
+			'Developed a 24-month technical roadmap providing clear strategic direction across multiple concurrent product streams.',
+			'Introduced rigorous code quality practices, reducing bugs and improving maintainability across all products.',
+			'Enhanced development frameworks — documentation, testing, and deployment — to improve team efficiency and reliability.',
+			'Ran technical concept sessions and hands-on workshops, building shared practices and continuous learning culture.',
+			'Built and maintained an internal engineering knowledge base covering principles, ADRs, coding standards, and onboarding content: the team’s primary reference for decisions and process.',
+		],
+	},
+	{
+		title: 'Solution Architect',
+		company: 'TimeLog',
+		dates: 'Jan 2012 – Sep 2018',
+		place: 'Copenhagen, Denmark',
+		points: [
+			'Evaluated and implemented new frameworks, patterns, and infrastructure; delivered proof-of-concepts with full documentation for handover to core development and DevOps.',
+			'Implemented key technologies including IdentityServer 4, Hypermedia REST API, ELK stack, and a custom CI/CD pipeline for a single-tenant SaaS application.',
+			'Conducted ongoing architectural grooming of a codebase spanning four technology generations and 15 years of history.',
+			'Migrated source control and build pipelines from TFS to Visual Studio Team Services; improved Git branching strategy across the team.',
+			'Introduced official API documentation and built SDKs for both internal use and customer integrations.',
+			'Served as Certified ScrumMaster for the distributed R&D team, improving process efficiency and team cadence.',
+		],
+	},
+];
+
+const earlier = [
+	['2006 – 2023', 'Co-founded **Lektieplan**, a homework and messaging portal for Danish primary schools, built and operated alongside full-time roles for 17 years.'],
+	['2009 – 2011', '**Videnhuset A/S / Videnhuset UK Ltd.** Partner and Solution Architect working with enterprise semantic search using Autonomy/IDOL products; helped establish the UK branch.'],
+	['2003 – 2010', '**Mindtrio.** Co-founder and developer; grew a software consultancy from a side project to a full-time business before merging with Videnhuset.'],
+];
+
+const education = [
+	{
+		title: 'MSc, Telecommunications',
+		org: 'DTU – Technical University of Denmark',
+		note: 'Software engineering, distributed systems, data communication, future mobile networks.',
+		year: '2003 – 2009',
+	},
+	{
+		title: 'Leadership Program, Class of 2023',
+		org: 'Viking Venture',
+		note: 'Value creation in B2B SaaS, team dynamics, self-leadership.',
+		year: '2023',
+	},
+	{
+		title: 'IT Project Management',
+		org: 'IT University of Copenhagen',
+		note: 'PMI, PRINCE2, and Scrum methodologies.',
+		year: '2013',
+	},
+];
+
+const bold = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Curriculum Vitae"
+			description="CTO with over 15 years in B2B SaaS, from developer to CTO at TimeLog across 12 years, now at Zylinc."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main class="cv">
+			<header class="cv-head">
+				<h1>Curriculum Vitae</h1>
+				<p class="role-line">Chief Technology Officer. B2B SaaS. Product engineering.</p>
+				<p class="contact">
+					Copenhagen, Denmark ·
+					<a href="mailto:soeren@oexenhave.dk">soeren@oexenhave.dk</a> ·
+					<a href="https://www.linkedin.com/in/oexenhave/">linkedin.com/in/oexenhave</a>
+				</p>
+			</header>
+
+			<section>
+				<h2>Profile</h2>
+				<p>
+					CTO with over 15 years in B2B SaaS, progressing from developer to CTO at TimeLog
+					across 12 years, experiencing the full arc from 24-person startup through
+					venture-backed growth to 120 FTEs and a right-sizing to 75, before joining Zylinc
+					in 2024.
+				</p>
+				<p>
+					I bring a steady, strategic approach to engineering leadership: I recognise
+					patterns others miss, in systems, teams, and processes, and use those insights to
+					design scalable platforms, drive automation, and create the conditions where great
+					engineering thrives.
+				</p>
+				<p>
+					I lead organisations through the shift from project-driven delivery to genuine
+					product engineering, drawing on practical experience with scaling, right-sizing,
+					and compliance. Technically grounded in .NET/C#, cloud-native architecture,
+					event-driven systems, and containerised infrastructure at scale.
+				</p>
+			</section>
+
+			<section>
+				<h2>Core skills</h2>
+				<dl class="skills">
+					{
+						skills.map(([k, v]) => (
+							<div class="skill">
+								<dt>{k}</dt>
+								<dd>{v}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</section>
+
+			<section>
+				<h2>Experience</h2>
+				{
+					roles.map((r) => (
+						<article class="role">
+							<div class="role-head">
+								<h3>
+									{r.title} <span class="at">at</span> {r.company}
+								</h3>
+								<p class="when tabular">
+									{r.dates}
+									<span class="place">{r.place}</span>
+								</p>
+							</div>
+							{r.context && <p class="context">{r.context}</p>}
+							<ul>
+								{r.points.map((p) => (
+									<li>{p}</li>
+								))}
+							</ul>
+						</article>
+					))
+				}
+			</section>
+
+			<section>
+				<h2>Earlier career</h2>
+				<dl class="timeline">
+					{
+						earlier.map(([when, what]) => (
+							<div class="entry">
+								<dt class="tabular">{when}</dt>
+								<dd set:html={bold(what)} />
+							</div>
+						))
+					}
+				</dl>
+			</section>
+
+			<section>
+				<h2>Education</h2>
+				<dl class="timeline">
+					{
+						education.map((e) => (
+							<div class="entry">
+								<dt class="tabular">{e.year}</dt>
+								<dd>
+									<strong>{e.title}</strong>, {e.org}
+									<span class="note">{e.note}</span>
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.cv {
+		width: min(52rem, 100% - calc(var(--gutter) * 2));
+		margin-inline: auto;
+		padding: clamp(2.5rem, 6vw, 4rem) 0 0;
+	}
+
+	.cv-head h1 {
+		margin-bottom: 0.4rem;
+	}
+
+	.role-line {
+		font-size: 1.1rem;
+		margin: 0 0 0.35rem;
+	}
+
+	.contact {
+		color: var(--ink-soft);
+		font-size: 0.92rem;
+		max-width: none;
+	}
+
+	section {
+		margin-top: 2.75rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--rule);
+	}
+
+	h2 {
+		margin: 0 0 1.25rem;
+		border: 0;
+		padding: 0;
+	}
+
+	.skills,
+	.timeline {
+		margin: 0;
+	}
+
+	.skill,
+	.entry {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.1rem 1.5rem;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.skill:last-child,
+	.entry:last-child {
+		border-bottom: 0;
+	}
+
+	@media (min-width: 640px) {
+		.skill,
+		.entry {
+			grid-template-columns: 11rem 1fr;
+		}
+	}
+
+	dt {
+		font-weight: 600;
+		font-size: 0.95rem;
+	}
+
+	.entry dt {
+		font-weight: 400;
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+	}
+
+	dd {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+
+	.entry dd {
+		color: var(--ink);
+	}
+
+	.note {
+		display: block;
+		color: var(--ink-soft);
+		font-size: 0.92rem;
+	}
+
+	.role {
+		margin-bottom: 2.25rem;
+	}
+
+	.role-head h3 {
+		margin: 0;
+		font-size: 1.25rem;
+	}
+
+	.at {
+		font-family: var(--font-body);
+		font-weight: 400;
+		color: var(--ink-soft);
+		font-size: 0.95rem;
+	}
+
+	.when {
+		margin: 0.15rem 0 0;
+		color: var(--ink-soft);
+		font-size: 0.88rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.15rem 1rem;
+	}
+
+	.context {
+		margin: 0.7rem 0 0.6rem;
+		color: var(--ink-soft);
+		font-size: 0.95rem;
+		border-left: 2px solid var(--signal-tint);
+		padding-left: 0.85rem;
+	}
+
+	.role ul {
+		margin: 0.5rem 0 0;
+		padding-left: 1.1rem;
+	}
+
+	.role li {
+		margin-bottom: 0.4rem;
+	}
+
+	@media print {
+		:root {
+			--paper: #fff;
+			--ink: #000;
+			--ink-soft: #333;
+			--rule: #bbb;
+		}
+		header:first-of-type,
+		footer {
+			display: none;
+		}
+		.cv {
+			width: 100%;
+			padding-top: 0;
+		}
+		.role,
+		.entry {
+			break-inside: avoid;
+		}
+	}
+</style>

@@ -1,11 +1,15 @@
 ---
-// The WordPress front page listed posts (body class "home blog"), so the
-// Astro front page does the same rather than showing a static landing page.
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const selected = posts.slice(0, 5);
 ---
 
 <!doctype html>
@@ -16,21 +20,109 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<p class="tagline">{SITE_DESCRIPTION}</p>
-			<PostList />
+			<section class="hero wrap">
+				<h1>Søren Øxenhave</h1>
+				<p class="lede">
+					CTO in Copenhagen. Building software, and the teams that ship it, since 1999.
+				</p>
+			</section>
+
+			<section class="wrap split">
+				<div>
+					<h2>What I do</h2>
+					<p>
+						I lead engineering in B2B SaaS: architecture, platform, and the people who build
+						both. Most of my work is making it possible for teams to release to production
+						without drama, and giving engineers a path they can see themselves on.
+					</p>
+					<p>
+						Before Zylinc I spent twelve years at TimeLog, arriving as a solution architect
+						and leaving as CTO, through venture-backed growth from 24 people to 120 and a
+						right-sizing back to 75.
+					</p>
+					<p>
+						<a href="/curriculum-vitae/">Read the full CV</a>{' '}or{' '}
+						<a href="/projects/">browse older projects</a>.
+					</p>
+				</div>
+				<div>
+					<h2>Writing</h2>
+					<ul class="posts">
+						{
+							selected.map((post) => (
+								<li>
+									<a href={`/${post.data.permalink}/`}>{post.data.title}</a>
+									<span class="date tabular">
+										<FormattedDate date={post.data.pubDate} />
+									</span>
+								</li>
+							))
+						}
+					</ul>
+					<p><a href="/blog/">All {posts.length} posts</a></p>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
 
 <style>
-	main {
-		width: 720px;
-		max-width: calc(100% - 2em);
-		margin: auto;
+	.hero {
+		padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
 	}
-	.tagline {
-		color: rgb(var(--gray));
-		margin-bottom: 2.5rem;
+
+	.hero h1 {
+		font-size: clamp(2.8rem, 1.6rem + 5vw, 5rem);
+		letter-spacing: -0.03em;
+		margin: 0;
+	}
+
+	.lede {
+		font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+		color: var(--ink-soft);
+		max-width: 46ch;
+		margin: 0.9rem 0 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem 3.5rem;
+		padding: 1.5rem 0 4rem;
+		border-top: 1px solid var(--rule);
+	}
+
+	.split h2 {
+		margin-top: 1.5rem;
+	}
+
+	@media (min-width: 820px) {
+		.split {
+			grid-template-columns: 1.15fr 1fr;
+		}
+	}
+
+	.posts {
+		list-style: none;
+		margin: 0 0 1.1rem;
+		padding: 0;
+	}
+
+	.posts li {
+		padding: 0.6rem 0;
+		border-bottom: 1px solid var(--rule);
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
+	.posts a {
+		font-weight: 500;
+	}
+
+	.date {
+		color: var(--ink-soft);
+		font-size: 0.82rem;
 	}
 </style>

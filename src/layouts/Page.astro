@@ -28,19 +28,22 @@ const { frontmatter } = Astro.props;
 </html>
 
 <style>
-	main {
-		width: 720px;
-		max-width: calc(100% - 2em);
-		margin: auto;
+	.prose {
+		padding: clamp(2.5rem, 6vw, 4rem) 0 0;
 	}
-	.prose :global(img) {
-		max-width: 100%;
-		height: auto;
-		border-radius: 8px;
+
+	/* The CV is a long run of "## Role at Company" followed by an italic date
+	   line; give that pair the structure it is missing in Markdown. */
+	.prose :global(h2) {
+		margin-top: 2.75rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--rule);
 	}
-	.prose :global(pre) {
-		padding: 1em;
-		border-radius: 8px;
-		overflow-x: auto;
+
+	.prose :global(h2 + p em) {
+		font-style: normal;
+		color: var(--ink-soft);
+		font-size: 0.9rem;
+		font-variant-numeric: tabular-nums;
 	}
 </style>

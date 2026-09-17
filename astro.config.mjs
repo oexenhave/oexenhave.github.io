@@ -7,32 +7,25 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://oexenhave.dk',
-	// WordPress served every URL with a trailing slash; keep that so canonical
-	// links and internal hrefs match the old site exactly.
-	trailingSlash: 'always',
+	// Internal links and canonicals still carry the trailing slash WordPress
+	// used, but 'ignore' means /lost and /lost/ both resolve. That URL is
+	// printed on physical name tags, so it must tolerate being mistyped.
+	trailingSlash: 'ignore',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
+			provider: fontProviders.google(),
+			name: 'IBM Plex Sans',
+			cssVariable: '--font-plex-sans',
+			weights: [400, 500, 600],
+			fallbacks: ['system-ui', 'sans-serif'],
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'IBM Plex Serif',
+			cssVariable: '--font-plex-serif',
+			weights: [600],
+			fallbacks: ['Georgia', 'serif'],
 		},
 	],
 });

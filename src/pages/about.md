@@ -9,7 +9,6 @@ In short: Positive. Dad. Amateur photographer. Happy. Computer wizard. Curious. 
 
 Please use one of the channels below in case you need to get hold of me:  
 Phone: [+45 2578 1825](tel:+4525781825)  
-Skype: [soeren.oexenhave](skype:soeren.oexenhave)  
 Github: [oexenhave](https://github.com/oexenhave)  
 Twitter: [oexenhave](https://twitter.com/oexenhave)  
 Facebook: [Søren Øxenhave](https://www.facebook.com/oexenhave)  

@@ -14,7 +14,9 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const IMG_DIR = path.join(ROOT, 'public', 'wp');
 
 // Pages that the Astro template owns as real routes, not ported content.
-const SKIP_PAGES = new Set(['blog']);
+// /blog/ and /curriculum-vitae/ are real Astro routes, not ported WordPress
+// content; re-importing them would collide with those pages.
+const SKIP_PAGES = new Set(['blog', 'curriculum-vitae']);
 
 const td = new TurndownService({
 	headingStyle: 'atx',
@@ -93,6 +95,14 @@ async function localiseImages(html) {
 }
 
 // Strip WordPress's trailing "share"/subscribe cruft and empty figures.
+// WordPress emitted at least one href containing a raw space (the Google Maps
+// link on /lost/), which turndown wraps in <> and Markdown then fails to parse.
+function encodeHrefSpaces(html) {
+	return html.replace(/href="(https?:\/\/[^"]*)"/gi, (m, url) =>
+		`href="${url.replace(/ /g, '%20')}"`,
+	);
+}
+
 function clean(html) {
 	return html
 		.replace(/<div[^>]*sharedaddy[\s\S]*?<\/div>/gi, '')
@@ -118,7 +128,7 @@ const posts = await getAll('posts');
 console.log(`posts: ${posts.length}`);
 for (const p of posts) {
 	const title = decode(p.title.rendered).replace(/\s+/g, ' ').trim();
-	const html = await localiseImages(clean(p.content.rendered));
+	const html = await localiseImages(encodeHrefSpaces(clean(p.content.rendered)));
 	const body = td.turndown(html).replace(/\n{3,}/g, '\n\n').trim();
 	const d = new Date(p.date);
 	const yyyy = String(d.getFullYear());
@@ -147,7 +157,7 @@ for (const g of pages) {
 		continue;
 	}
 	const title = decode(g.title.rendered).replace(/\s+/g, ' ').trim();
-	const html = await localiseImages(clean(g.content.rendered));
+	const html = await localiseImages(encodeHrefSpaces(clean(g.content.rendered)));
 	const body = td.turndown(html).replace(/\n{3,}/g, '\n\n').trim();
 	const fm = [
 		'---',

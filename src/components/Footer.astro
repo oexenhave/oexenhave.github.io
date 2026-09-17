@@ -1,34 +1,45 @@
 ---
-import { SITE_TITLE } from '../consts';
-
-const today = new Date();
+const year = new Date().getFullYear();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} {SITE_TITLE}
-	<div class="social-links">
-		<a href="https://github.com/oexenhave" target="_blank" rel="me noopener">GitHub</a>
-		<a href="https://dk.linkedin.com/in/oexenhave" target="_blank" rel="me noopener">LinkedIn</a>
-		<a href="/rss.xml">RSS</a>
+	<div class="wrap">
+		<p class="tabular">&copy; {year} Søren Øxenhave</p>
+		<ul>
+			<li><a href="https://dk.linkedin.com/in/oexenhave" rel="me">LinkedIn</a></li>
+			<li><a href="https://github.com/oexenhave" rel="me">GitHub</a></li>
+			<li><a href="mailto:soeren@oexenhave.dk">Email</a></li>
+			<li><a href="/rss.xml">RSS</a></li>
+		</ul>
 	</div>
 </footer>
 
 <style>
 	footer {
-		padding: 2em 1em 3em;
-		text-align: center;
-		color: rgb(var(--gray));
+		border-top: 1px solid var(--rule);
+		margin-top: 4rem;
+		padding: 1.5rem 0 3rem;
+		font-size: 0.9rem;
 	}
-	.social-links {
+
+	.wrap {
 		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 0.6em;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.6rem 1.5rem;
 	}
-	.social-links a {
-		color: rgb(var(--gray));
+
+	p {
+		margin: 0;
+		color: var(--ink-soft);
 	}
-	.social-links a:hover {
-		color: var(--accent);
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.2rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 </style>
