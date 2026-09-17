@@ -1,0 +1,46 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	frontmatter: { title: string; description?: string };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={frontmatter.title} description={frontmatter.description ?? ''} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article class="prose">
+				<h1>{frontmatter.title}</h1>
+				<slot />
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+	}
+	.prose :global(img) {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+	}
+	.prose :global(pre) {
+		padding: 1em;
+		border-radius: 8px;
+		overflow-x: auto;
+	}
+</style>

@@ -1,0 +1,107 @@
+[
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2022/06/19/the-developer-onboarding-time-tracking-pitch/",
+    "to": "/2022/06/19/the-developer-onboarding-time-tracking-pitch/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2020/08/13/export-nuget-package-licenses-to-csv-with-powershell/",
+    "to": "/2020/08/13/export-nuget-package-licenses-to-csv-with-powershell/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2019/11/11/pushing-developer-growth-with-an-engineering-career-ladder/",
+    "to": "/2019/11/11/pushing-developer-growth-with-an-engineering-career-ladder/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2019/09/26/cleaning-up-indices-in-elasticsearch-through-powershell/",
+    "to": "/2019/09/26/cleaning-up-indices-in-elasticsearch-through-powershell/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2019/01/28/single-tenant-api-conventions-to-the-rescue/",
+    "to": "/2019/01/28/single-tenant-api-conventions-to-the-rescue/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2018/12/12/venturing-into-scaling-a-monolith/",
+    "to": "/2018/12/12/venturing-into-scaling-a-monolith/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2018/04/10/finding-places-to-optimize-your-sql-like-a-pro/",
+    "to": "/2018/04/10/finding-places-to-optimize-your-sql-like-a-pro/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2017/01/22/running-jekyll-on-ubuntu-on-windows/",
+    "to": "/2017/01/22/running-jekyll-on-ubuntu-on-windows/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2016/10/31/entity-framework-adventures-concurrency-troubles/",
+    "to": "/2016/10/31/entity-framework-adventures-concurrency-troubles/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2016/05/17/proposed-scrum-retrospective-agenda/",
+    "to": "/2016/05/17/proposed-scrum-retrospective-agenda/"
+  },
+  {
+    "type": "post",
+    "from": "https://oexenhave.dk/2016/04/04/swift-iis-log-analytics-with-elastic-and-kibana/",
+    "to": "/2016/04/04/swift-iis-log-analytics-with-elastic-and-kibana/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/proton-opsaetningsguide/",
+    "to": "/proton-opsaetningsguide/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/sox-wishlist/",
+    "to": "/sox-wishlist/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/matteo-wishlist/",
+    "to": "/matteo-wishlist/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/manager-readme/",
+    "to": "/manager-readme/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/lost/",
+    "to": "/lost/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/sia-wishlist/",
+    "to": "/sia-wishlist/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/curriculum-vitae/",
+    "to": "/curriculum-vitae/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/projects/",
+    "to": "/projects/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/home/",
+    "to": "/home/"
+  },
+  {
+    "type": "page",
+    "from": "https://oexenhave.dk/about/",
+    "to": "/about/"
+  }
+]

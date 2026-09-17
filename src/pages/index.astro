@@ -1,0 +1,36 @@
+---
+// The WordPress front page listed posts (body class "home blog"), so the
+// Astro front page does the same rather than showing a static landing page.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<p class="tagline">{SITE_DESCRIPTION}</p>
+			<PostList />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+	}
+	.tagline {
+		color: rgb(var(--gray));
+		margin-bottom: 2.5rem;
+	}
+</style>
